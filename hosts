@@ -24,8 +24,5 @@
 # This list is Copyright 2000-2017 Safer-Networking Ltd.
 # End of entries inserted by Spybot Anti-Beacon for Windows 10
 
-
-
 127.0.0.1 https://mail.google.com/
-127.0.0.1 www.gmail.ca
 127.0.0.1 www.gmail.com
