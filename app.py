@@ -25,18 +25,13 @@ currentTime = dt(
     dt.now().year, dt.now().month, dt.now().day, dt.now().hour, dt.now().minute
 )
 timeToBlock = dt(dt.now().year, dt.now().month, dt.now().day, dt.now().hour, 18)
-
 while True:
 
     # checking the status of the time in regards the hours (present vs blocking time hours)
-    if dt(
-        dt.now().year, dt.now().month, dt.now().day, dt.now().hour, dt.now().minute
-    ) == dt(dt.now().year, dt.now().month, dt.now().day, dt.now().hour, 24):
+    if dt(dt.now().year, dt.now().month, dt.now().day, dt.now().hour, 2 )<dt.now()< dt(dt.now().year, dt.now().month, dt.now().day, dt.now().hour, 4):
         print("time to block")
-    else:
+    else:                   
         print("no block")
-
     # The program will now sleep for n-seconds, before rechecking the time
-    print("time to sleep")
     time.sleep(2)
 
