@@ -11,10 +11,10 @@ from datetime import datetime as dt
 
 
 # Creating a temp host file, that we can alter and then use it to override the systems original host file
-temp_HostFile = "hosts"
+windows_Hostpath = "hosts"
 
 # creating a raw string via \\ or using 'r' letter infront of the string
-windows_Hostpath = "C:\Windows\System32\drivers\etc"
+windows_Hostpath = "C:\Windows\System32\drivers\etc\hosts"
 
 # The the required the redirection file that will be used to block desired sites
 redirection_IP_route = "127.0.0.1"
@@ -32,13 +32,13 @@ while True:
     # checking the status of the time in regards the hours (present vs blocking time hours)
     if dt(dt.now().year, dt.now().month, dt.now().day, dt.now().hour, startingMinutes ) < dt.now() < dt(dt.now().year, dt.now().month, dt.now().day, dt.now().hour, endingMinutes):
         print("time to block")
-        with open(temp_HostFile,'r+') as myFile:
+        with open(windows_Hostpath,'r+') as myFile:
             hostFileContent=myFile.read()
             for website in websites_toBlock:
                 if website in hostFileContent:
                     pass
                 else:
-                    myFile.write(f"{redirection_IP_route} {website}\n")
+                    myFile.write(redirection_IP_route+" "+website)
     
     
                     
@@ -47,7 +47,7 @@ while True:
          and then write the required files to be blocked, if they already exist,
           then we don't write them again
         '''
-        with open(temp_HostFile,"r+") as myFile:
+        with open(windows_Hostpath,"r+") as myFile:
             
             #opening the already existing host file and then storing each line in  a variable called ' hostFileContent'
             hostFileContent=myFile.readlines()
