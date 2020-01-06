@@ -41,7 +41,12 @@ while True:
                     tempHostFile.write(f"{redirection_IP_route} {website}\n")
                     
     else:                   
-        print("no block")
+        with open(tempHostFile,"r+") as file:
+            hostFileContent=file.readlines()
+            for line in hostFileContent:
+                if not any(website in line for website in websites_toBlock):
+                    file.write(line)
     # The program will now sleep for n-seconds, before rechecking the time
+        print("Fun hours....")
     time.sleep(2)
 
